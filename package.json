@@ -1,11 +1,16 @@
 {
-  "name": "videoCaptions",
+  "name": "video-captions",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {},
+  "main": "src/start",
+  "scripts": {
+    "start": "electron ."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^6.0.11"
+  }
 }

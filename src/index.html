@@ -1,0 +1,100 @@
+<style>
+	body {
+		font-family: Arial, serif;
+	}
+
+	button {
+		background: white;
+		color: black;
+		border: 1px solid #aaa;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background: #eee;
+	}
+
+	button:active {
+		background: #aaa;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.controls {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	#help-text {
+		white-space: pre-line;
+	}
+
+	#help-text:first-line {
+		line-height: 0;
+	}
+
+	#help-text.hidden {
+		display: none;
+	}
+
+	#video-container {
+		flex-grow: 1;
+		display: flex;
+		margin-top: 10px;
+	}
+
+	#video {
+		flex-grow: 1;
+	}
+
+	#overlay {
+		position: absolute;
+		color: white;
+		padding: 5px;
+		margin: 5px;
+		font-size: 16px;
+		font-family: Arial, serif;
+		background: #0003;
+	}
+
+	#overlay.hidden {
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0s 250ms, opacity 250ms linear;
+	}
+</style>
+
+<div class="container">
+	<div class="controls">
+		<button id="help-button">help?</button>
+		<label>Video: <input id="video-input" type="file"></label>
+		<label>Subtitles: <input id="subtitles-input" type="file"></label>
+		<button id="fullscreen-button">Fullscreen</button>
+	</div>
+
+	<div id="help-text" class="hidden">
+		Shortcuts:
+		&nbsp;&nbsp;- `Down` or `space` to toggle pause.
+		&nbsp;&nbsp;- `Left` & `right` to rewind or forward 10 seconds.
+		&nbsp;&nbsp;- `,` and `.` to slow down or speed up playback rate.
+		&nbsp;&nbsp;- `F` to toggle fullscreen.
+	</div>
+
+	<div id="video-container">
+		<video id="video" src="https://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_640_3MG.mp4" controls controlslist="nofullscreen">
+			<track id="subtitles" kind="subtitles" label="English captions" srclang="en" default>
+		</video>
+		<div id="overlay" class="hidden"></div>
+	</div>
+</div>
+
+<script src="main.js"></script>
+
+<!--
+todo
+auto-convert captions to vtt format
+-->
