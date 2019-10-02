@@ -107,11 +107,15 @@
 		$('#help-text').classList.toggle('hidden');
 	});
 
-	$('#video-input').addEventListener('change', () =>
-		$('#video').src = URL.createObjectURL($('#video-input').files[0]));
+	$('#video-input').addEventListener('change', () => {
+		$('#video').src = URL.createObjectURL($('#video-input').files[0]);
+		$('#video-input').blur();
+	});
 
-	$('#subtitles-input').addEventListener('change', () =>
-		$('#subtitles').src = URL.createObjectURL($('#subtitles-input').files[0]));
+	$('#subtitles-input').addEventListener('change', () => {
+		$('#subtitles').src = URL.createObjectURL($('#subtitles-input').files[0]);
+		$('#subtitles-input').blur();
+	});
 
 	let displayPlaybackRate = () =>
 		showOverlay('Playback Rate: ' + $('#video').playbackRate);
