@@ -1,3 +1,7 @@
+const $tream = require('bs-better-stream');
+const dwytpl = require('dwytpl');
+const storage = require('./storage');
+
 const $ = document.querySelector.bind(document);
 
 let showOverlay = (text, duration = 500) => {
@@ -69,3 +73,45 @@ document.addEventListener('keydown', ({key, target}) => {
 			break;
 	}
 });
+
+let videoList = new dwytpl.VideoList();
+// todo fill with already downloaded
+
+let syncher = new dwytpl.Syncher(videoList, storage.downloadDir);
+syncher.download(10, false);
+
+syncher.tracker.summary.each(summaryText => {
+	$('#download-summary-line-one').textContent = summaryText[0];
+	$('#download-summary-line-two').textContent = summaryText[1];
+});
+
+videoList.videos.each(async video => {
+	let div = document.createElement('div');
+	let divTop = document.createElement('div');
+	let divBottom = document.createElement('div');
+
+	divTop.textContent = video.getName_();
+	video.status.stream.each(statusText => divBottom.textContent = statusText);
+
+	div.appendChild(divTop);
+	div.appendChild(divBottom);
+	$('#download-list').appendChild(div);
+
+	// let line = document.createElement('x-downloading-song-line');
+	// line.videoId = video.id_;
+	// line.title = video.getName_();
+	// video.status.stream.each(statusText => line.status = statusText);
+	// video.status.promise
+	// 	.then(() => line.downloadStatus = 'true')
+	// 	.catch(() => line.downloadStatus = 'false');
+	// this.$('#list').appendChild(line);
+	// line.addEventListener('select', () => this.selectLine_(line, video));
+});
+
+$('#download-add').addEventListener('change', () => {
+	let value = $('#download-add').value;
+	let id = (value.match(/v=([\w-]+)/) || value.match(/([\w-]+)/))[1];
+	videoList.add(id);
+});
+
+// todo / key to fast forward while pressed

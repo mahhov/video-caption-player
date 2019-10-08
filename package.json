@@ -9,7 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "bs-better-stream": "^1.9.0",
+    "dwytpl": "^3.3.3",
+    "xx-element": "^1.1.0"
+  },
   "devDependencies": {
     "electron": "^6.0.11"
   }
