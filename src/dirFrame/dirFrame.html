@@ -1,9 +1,22 @@
 <style>
-	div {
-		outline: 1px black solid;
+	:host {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	#list {
+		overflow-y: auto;
+	}
+
+	#list > div {
+		white-space: nowrap;
+	}
+
+	#list > div.hidden {
+		display: none;
 	}
 </style>
 
-<div>
-	dir frame
-</div>
+<input id="search-input">
+<div id="list"></div>
