@@ -9,7 +9,7 @@ customElements.define(name, class extends XElement {
 
 	connectedCallback() {
 		this.refreshList_();
-		this.$('#search-input').addEventListener('input', () => this.filterList_())
+		this.$('#filter-input').addEventListener('input', () => this.filterList_())
 	}
 
 	async refreshList_() {
@@ -27,7 +27,7 @@ customElements.define(name, class extends XElement {
 
 	filterList_() {
 		const charFilterRe = /[^a-z\d]/g;
-		let filterWords = this.$('#search-input').value.toLowerCase().split(charFilterRe);
+		let filterWords = this.$('#filter-input').value.toLowerCase().split(charFilterRe);
 
 		this.$$('#list > div').forEach(line => {
 			let lineText = line.textContent.toLowerCase().replace(charFilterRe, '');
