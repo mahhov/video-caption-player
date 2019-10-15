@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs').promises;
-const rootPath = require('env-paths')('js-player').data;
+const rootPath = require('env-paths')('video-captions').data;
 
 console.log(rootPath);
 const STORAGE_DIR = rootPath;
@@ -18,11 +18,8 @@ class Storage {
 	}
 
 	prepareDir_() {
-		return this.prepareDirPromise_ = this.prepareDirPromise_ || new Promise(async resolve => {
-			await fs.mkdir(this.storageDir_).catch(() => null);
-			await fs.mkdir(this.downloadDir_).catch(() => null);
-			resolve();
-		});
+		return this.prepareDirPromise_ = this.prepareDirPromise_ ||
+			fs.mkdir(this.downloadDir_, {recursive: true}).catch(() => null);
 	}
 
 	get videoList() {
