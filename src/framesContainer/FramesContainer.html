@@ -1,11 +1,20 @@
 <style>
-	div {
+	:host {
 		display: flex;
+		height: 100%;
+	}
+
+	.frame {
+		margin: 0 20px;
+	}
+
+	x-dir-frame,
+	x-explore-frame,
+	x-video-frame {
+		flex: 1;
 	}
 </style>
 
-<div>
-	<x-dir-frame></x-dir-frame>
-	<x-explore-frame></x-explore-frame>
-	<x-video-frame></x-video-frame>
-</div>
+<x-dir-frame class="frame"></x-dir-frame>
+<x-explore-frame class="frame"></x-explore-frame>
+<x-video-frame class="frame"></x-video-frame>
