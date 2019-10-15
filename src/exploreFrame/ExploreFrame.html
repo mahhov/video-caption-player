@@ -1,9 +1,40 @@
 <style>
-	div {
-		outline: 1px black solid;
+	@import url("./common.css");
+
+	:host {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.search,
+	.download {
+		flex: .5;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.download {
+		margin-top: 20px;
+	}
+
+	.succeeded {
+		background: #b8e6a1;
+	}
+
+	.failed {
+		background: #e6a4a1;
 	}
 </style>
 
-<div>
-	explore frame
+<div class="search">
+	<input id="search-input" placeholder="search">
+	<div id="search-list" class="list selectable"></div>
+	<!-- todo thumbnail -->
+</div>
+<div class="download">
+	<input id="video-download-input" placeholder="download video">
+	<div id="download-list" class="list"></div>
+	<!-- todo background span 100% -->
+	<!-- todo progress on separate line -->
 </div>
