@@ -1,6 +1,6 @@
 const {XElement, importUtil} = require('xx-element');
 const {template, name} = importUtil(__filename);
-const storage = require('../service/Storage');
+const storage = require('../service/storage');
 
 customElements.define(name, class extends XElement {
 	static get htmlTemplate() {
