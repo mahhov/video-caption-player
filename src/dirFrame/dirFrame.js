@@ -8,11 +8,11 @@ customElements.define(name, class extends XElement {
 	}
 
 	connectedCallback() {
-		this.refreshList_();
+		this.refreshList();
 		this.$('#filter-input').addEventListener('input', () => this.filterList_())
 	}
 
-	async refreshList_() {
+	async refreshList() {
 		this.clearChildren('#list');
 		let videoList = await storage.videoList;
 		this.$('#count').textContent = videoList.length;
@@ -20,7 +20,7 @@ customElements.define(name, class extends XElement {
 			let line = document.createElement('div');
 			line.textContent = name;
 			line.addEventListener('click', () =>
-				this.dispatchEvent(new CustomEvent('select-video', {detail: name})));
+				this.emit('select-video', name));
 			this.$('#list').appendChild(line);
 		})
 	}

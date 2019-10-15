@@ -15,7 +15,8 @@ customElements.define(name, class extends XElement {
 			video.status.stream.each(statusText => line.textContent = `${video.getName_()} - ${statusText}`);
 			video.status.promise
 				.then(() => line.classList.add('succeeded'))
-				.catch(() => line.classList.add('failed'));
+				.catch(() => line.classList.add('failed'))
+				.finally(this.emit('downloaded'));
 			this.$('#download-list').appendChild(line);
 		});
 
