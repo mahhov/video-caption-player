@@ -5,6 +5,20 @@
 		overflow: hidden;
 	}
 
+	.top {
+		display: flex;
+	}
+
+	.top > #count {
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+
+	.top > #search-input {
+		flex: 1;
+		margin-left: 10px;
+	}
+
 	#list {
 		overflow-y: auto;
 		margin-top: 20px;
@@ -25,5 +39,10 @@
 	}
 </style>
 
-<input id="search-input">
+<div class="top">
+	<span id="count"></span>
+	<!-- todo link button -->
+	<input id="search-input">
+</div>
 <div id="list"></div>
+<!-- todo remove button for each list line -->

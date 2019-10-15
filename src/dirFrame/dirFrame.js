@@ -14,7 +14,9 @@ customElements.define(name, class extends XElement {
 
 	async refreshList_() {
 		this.clearChildren('#list');
-		(await storage.videoList).map(name => {
+		let videoList = await storage.videoList;
+		this.$('#count').textContent = videoList.length;
+		videoList.map(name => {
 			let line = document.createElement('div');
 			line.textContent = name;
 			line.addEventListener('click', () =>
