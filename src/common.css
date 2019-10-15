@@ -1,0 +1,18 @@
+.list {
+	overflow-y: auto;
+	flex: 1;
+	margin-top: 20px;
+}
+
+.list > div {
+	white-space: nowrap;
+	padding: 2px 0;
+}
+
+.list.selectable > div {
+	cursor: pointer;
+}
+
+.list.selectable > div:hover {
+	background: #cce4ff;
+}

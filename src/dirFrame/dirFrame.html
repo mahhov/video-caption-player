@@ -1,4 +1,6 @@
 <style>
+	@import url("./common.css");
+
 	:host {
 		display: flex;
 		flex-direction: column;
@@ -9,40 +11,25 @@
 		display: flex;
 	}
 
-	.top > #count {
+	#count {
 		margin-top: auto;
 		margin-bottom: auto;
 	}
 
-	.top > #search-input {
+	input {
 		flex: 1;
 		margin-left: 10px;
 	}
 
-	#list {
-		overflow-y: auto;
-		margin-top: 20px;
-	}
-
-	#list > div {
-		white-space: nowrap;
-		cursor: pointer;
-		padding: 2px 0;
-	}
-
 	#list > div.hidden {
 		display: none;
-	}
-
-	#list > div:hover {
-		background: #cce4ff;
 	}
 </style>
 
 <div class="top">
 	<span id="count"></span>
 	<!-- todo link button -->
-	<input id="filter-input">
+	<input id="filter-input" placeholder="filter">
 </div>
-<div id="list"></div>
+<div id="list" class="list selectable"></div>
 <!-- todo remove button for each list line -->
