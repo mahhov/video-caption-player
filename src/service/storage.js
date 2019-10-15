@@ -25,20 +25,24 @@ class Storage {
 		});
 	}
 
-	get fileList() {
-		return this.fileListPromise_ = this.fileListPromise_ ||
+	get videoList() {
+		return this.videoListPromise_ = this.videoListPromise_ ||
 			this.prepareDir_().then(() => fs.readdir(this.downloadDir_));
 	}
 
-	async readVideo(fileName) {
-		await this.prepareDir_();
-		return await fs.readFile(path.resolve(this.downloadDir_, fileName));
+	async readVideo(videoName) {
+		return fs.readFile(await this.videoPath(videoName));
 	}
 
-	async removeVideo(fileName) {
-		this.fileListPromise_ = Promise.resolve((await this.fileListPromise_).filter(a => a !== fileName));
+	async videoPath(videoName) {
 		await this.prepareDir_();
-		await fs.unlink(path.resolve(this.downloadDir_, fileName));
+		return path.resolve(this.downloadDir_, videoName);
+	}
+
+	async removeVideo(videoName) {
+		await this.prepareDir_();
+		this.videoListPromise_ = Promise.resolve((await this.videoList).filter(a => a !== videoName));
+		await fs.unlink(path.resolve(this.downloadDir_, videoName));
 	}
 }
 
