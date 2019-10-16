@@ -11,6 +11,6 @@ customElements.define(name, class extends XElement {
 			this.$('x-video-frame').play(name));
 
 		this.$('x-explore-frame').addEventListener('downloaded', () =>
-			this.$('x-video-frame').refreshList());
+			this.$('x-dir-frame').refreshList());
 	}
 });
