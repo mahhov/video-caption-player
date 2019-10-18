@@ -19,8 +19,17 @@ customElements.define(name, class extends XElement {
 		videoList.map(name => {
 			let line = document.createElement('div');
 			line.textContent = name;
-			line.addEventListener('click', () =>
-				this.emit('select-video', name));
+			line.addEventListener('click', () => this.emit('select-video', name));
+
+			let removeButton = document.createElement('button');
+			removeButton.textContent = 'X'; // todo proper styling
+			removeButton.addEventListener('click', async e => {
+				e.stopPropagation();
+				await storage.removeVideo(name);
+				this.refreshList();
+			});
+			line.appendChild(removeButton);
+
 			this.$('#list').appendChild(line);
 		})
 	}

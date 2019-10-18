@@ -16,3 +16,17 @@
 .list.selectable > div:hover {
 	background: #cce4ff;
 }
+
+button {
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+button:hover {
+	background: #cce4ff;
+}
+
+button:active {
+	background: #99caff;
+}
