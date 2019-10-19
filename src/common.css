@@ -17,16 +17,23 @@
 	background: #cce4ff;
 }
 
-button {
+button,
+label.button {
 	background: none;
 	border: 0;
 	cursor: pointer;
 }
 
-button:hover {
+button:hover,
+label.button {
 	background: #cce4ff;
 }
 
-button:active {
+button:active,
+label.button {
 	background: #99caff;
+}
+
+label.button > input[type="file"] {
+	display: none;
 }
