@@ -25,12 +25,12 @@ label.button {
 }
 
 button:hover,
-label.button {
+label.button:hover {
 	background: #cce4ff;
 }
 
 button:active,
-label.button {
+label.button:active {
 	background: #99caff;
 }
 

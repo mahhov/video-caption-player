@@ -3,21 +3,19 @@
 
 	:host {
 		display: flex;
+		overflow: hidden;
+		flex-direction: column;
 	}
 
 	button {
 		border: 1px solid #aaa;
 	}
 
-	.container {
-		display: flex;
-		flex-direction: column;
-	}
-
 	/*todo controls need styling and are too wide*/
 	.controls {
 		display: flex;
 		justify-content: space-between;
+		flex-wrap: wrap;
 	}
 
 	.controls > * {
@@ -61,26 +59,24 @@
 	}
 </style>
 
-<div class="container">
-	<div class="controls">
-		<label>Select Video<input id="video-input" type="file"></label>
-		<label>Select Subtitles<input id="subtitles-input" type="file"></label>
-		<button id="help-button">help?</button>
-		<button id="fullscreen-button">Fullscreen</button>
-	</div>
+<div class="controls">
+	<label class="button">Select Video<input id="video-input" type="file"></label>
+	<label class="button">Select Subtitles<input id="subtitles-input" type="file"></label>
+	<button id="help-button">help?</button>
+	<button id="fullscreen-button">Fullscreen</button>
+</div>
 
-	<div id="help-text" class="hidden">
-		Shortcuts:
-		&nbsp;&nbsp;- `Down` or `space` to toggle pause.
-		&nbsp;&nbsp;- `Left` & `right` to rewind or forward 10 seconds.
-		&nbsp;&nbsp;- `,` and `.` to slow down or speed up playback rate.
-		&nbsp;&nbsp;- `F` to toggle fullscreen.
-	</div>
+<div id="help-text" class="hidden">
+	Shortcuts:
+	&nbsp;&nbsp;- `Down` or `space` to toggle pause.
+	&nbsp;&nbsp;- `Left` & `right` to rewind or forward 10 seconds.
+	&nbsp;&nbsp;- `,` and `.` to slow down or speed up playback rate.
+	&nbsp;&nbsp;- `F` to toggle fullscreen.
+</div>
 
-	<div id="video-container">
-		<video id="video" src="https://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_640_3MG.mp4" controls controlslist="nofullscreen">
-			<track id="subtitles" kind="subtitles" label="English captions" srclang="en" default>
-		</video>
-		<div id="overlay" class="hidden"></div>
-	</div>
+<div id="video-container">
+	<video id="video" src="https://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_640_3MG.mp4" controls controlslist="nofullscreen">
+		<track id="subtitles" kind="subtitles" label="English captions" srclang="en" default>
+	</video>
+	<div id="overlay" class="hidden"></div>
 </div>
