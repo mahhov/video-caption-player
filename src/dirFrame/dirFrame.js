@@ -18,17 +18,20 @@ customElements.define(name, class extends XElement {
 		this.$('#count').textContent = videoList.length;
 		videoList.map(name => {
 			let line = document.createElement('div');
-			line.textContent = name;
 			line.addEventListener('click', () => this.emit('select-video', name));
 
 			let removeButton = document.createElement('button');
-			removeButton.textContent = 'X'; // todo proper styling
+			removeButton.textContent = 'X'; // todo proper styling on hover
 			removeButton.addEventListener('click', async e => {
 				e.stopPropagation();
 				await storage.removeVideo(name);
 				this.refreshList();
 			});
 			line.appendChild(removeButton);
+
+			let text = document.createElement('span');
+			text.textContent = name;
+			line.appendChild(text);
 
 			this.$('#list').appendChild(line);
 		})
