@@ -11,6 +11,10 @@
 		display: flex;
 	}
 
+	.top > :not(:first-child) {
+		margin-left: 10px;
+	}
+
 	#count {
 		margin-top: auto;
 		margin-bottom: auto;
@@ -18,21 +22,20 @@
 
 	input {
 		flex: 1;
-		margin-left: 10px;
 	}
 
 	#list > div.hidden {
 		display: none;
 	}
 
-	button {
+	#list button {
 		border: 0;
 	}
 </style>
 
 <div class="top">
 	<span id="count"></span>
-	<!-- todo link button -->
+	<button id="link">Link</button>
 	<input id="filter-input" placeholder="filter">
 </div>
 <div id="list" class="list selectable"></div>

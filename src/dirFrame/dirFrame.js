@@ -1,6 +1,7 @@
 const {XElement, importUtil} = require('xx-element');
 const {template, name} = importUtil(__filename);
 const storage = require('../service/storage');
+const {shell} = require('electron');
 
 customElements.define(name, class extends XElement {
 	static get htmlTemplate() {
@@ -9,6 +10,7 @@ customElements.define(name, class extends XElement {
 
 	connectedCallback() {
 		this.refreshList();
+		this.$('#link').addEventListener('click', () => shell.openExternal(storage.downloadDir));
 		this.$('#filter-input').addEventListener('input', () => this.filterList_())
 	}
 
