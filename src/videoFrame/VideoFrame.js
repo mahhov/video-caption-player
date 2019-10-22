@@ -54,13 +54,24 @@ customElements.define(name, class VideoFrame extends XElement {
 					this.$('#video').playbackRate = VideoFrame.shift(this.$('#video').playbackRate, .25, .25, 4);
 					this.displayPlaybackRate_();
 					break;
+				case '/':
+					this.fastForwardRevertRate_ = this.fastForwardRevertRate_ || this.$('#video').playbackRate;
+					this.$('#video').playbackRate = VideoFrame.shift(this.$('#video').playbackRate, 1, .25, 4);
+					break;
 				case 'f':
 					this.fullscreenToggle_();
 					break;
 			}
 		});
 
-		// todo / key to fast forward while pressed
+		document.addEventListener('keyup', ({key, target}) => {
+			switch (key) {
+				case '/':
+					this.$('#video').playbackRate = this.fastForwardRevertRate_;
+					this.fastForwardRevertRate_ = null;
+					break;
+			}
+		});
 	}
 
 	async play(name) {
@@ -90,3 +101,5 @@ customElements.define(name, class VideoFrame extends XElement {
 		return Math.min(Math.max(value + delta, min), max);
 	}
 });
+
+// todo support streaming media
