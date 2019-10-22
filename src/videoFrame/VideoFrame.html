@@ -18,7 +18,7 @@
 		flex-wrap: wrap;
 	}
 
-	.controls > * {
+	.controls * {
 		flex: 1;
 	}
 
@@ -48,7 +48,6 @@
 		color: white;
 		padding: 5px;
 		margin: 5px;
-		font-size: 16px;
 		background: #0003;
 	}
 
@@ -60,8 +59,12 @@
 </style>
 
 <div class="controls">
-	<label class="button">Select Video<input id="video-input" type="file"></label>
-	<label class="button">Select Subtitles<input id="subtitles-input" type="file"></label>
+	<label class="button">
+		<button>Select Video</button>
+		<input id="video-input" type="file"></label>
+	<label class="button">
+		<button>Select Subtitles</button>
+		<input id="subtitles-input" type="file"></label>
 	<button id="help-button">help?</button>
 	<button id="fullscreen-button">Fullscreen</button>
 </div>

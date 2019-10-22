@@ -18,21 +18,22 @@
 	background: #cce4ff;
 }
 
-button,
-label.button {
+button {
 	background: none;
 	border: 0;
 	cursor: pointer;
 }
 
-button:hover,
-label.button:hover {
+button:hover {
 	background: #cce4ff;
 }
 
-button:active,
-label.button:active {
+button:active {
 	background: #99caff;
+}
+
+label.button {
+	display: contents;
 }
 
 label.button > input[type="file"] {
