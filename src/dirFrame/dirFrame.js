@@ -20,7 +20,11 @@ customElements.define(name, class extends XElement {
 		this.$('#count').textContent = videoList.length;
 		videoList.map(name => {
 			let line = document.createElement('div');
-			line.addEventListener('click', () => this.emit('select-video', name));
+			line.addEventListener('click', () => {
+				[...this.$('#list').children].forEach(line => line.classList.remove('selected'));
+				line.classList.add('selected');
+				this.emit('select-video', name)
+			});
 
 			let removeButton = document.createElement('button');
 			removeButton.textContent = 'X'; // todo proper styling on hover

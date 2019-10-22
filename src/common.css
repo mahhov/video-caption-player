@@ -18,6 +18,10 @@
 	background: #cce4ff;
 }
 
+.list.selectable > div.selected {
+	background: #ffeacc;
+}
+
 button {
 	background: none;
 	border: 1px solid #aaa;
