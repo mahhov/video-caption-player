@@ -56,7 +56,7 @@ customElements.define(name, class VideoFrame extends XElement {
 					break;
 				case '/':
 					this.fastForwardRevertRate_ = this.fastForwardRevertRate_ || this.$('#video').playbackRate;
-					this.$('#video').playbackRate = VideoFrame.shift(this.$('#video').playbackRate, 1, .25, 4);
+					this.$('#video').playbackRate = VideoFrame.shift(this.fastForwardRevertRate_, .5, .25, 4);
 					break;
 				case 'f':
 					this.fullscreenToggle_();
@@ -76,6 +76,7 @@ customElements.define(name, class VideoFrame extends XElement {
 
 	async play(name) {
 		this.$('video').src = await storage.videoPath(name);
+		this.$('video').play();
 	}
 
 	showOverlay_(text, duration = 500) {
