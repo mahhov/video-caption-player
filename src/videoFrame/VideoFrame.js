@@ -27,12 +27,12 @@ customElements.define(name, class VideoFrame extends XElement {
 	}
 
 	configGlobalKeyListener_() {
-		document.addEventListener('keydown', ({key, target}) => {
-			if (target.nodeName === 'INPUT')
+		document.addEventListener('keydown', e => {
+			if (e.path[0].nodeName === 'INPUT')
 				return;
 			this.$('#video').blur();
 
-			switch (key) {
+			switch (e.key) {
 				case 'ArrowLeft':
 					this.$('#video').currentTime = VideoFrame.shift(this.$('#video').currentTime, -10, 0, this.$('#video').duration);
 					break;
@@ -64,8 +64,8 @@ customElements.define(name, class VideoFrame extends XElement {
 			}
 		});
 
-		document.addEventListener('keyup', ({key, target}) => {
-			switch (key) {
+		document.addEventListener('keyup', e => {
+			switch (e.key) {
 				case '/':
 					this.$('#video').playbackRate = this.fastForwardRevertRate_;
 					this.fastForwardRevertRate_ = null;
