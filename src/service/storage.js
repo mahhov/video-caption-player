@@ -36,6 +36,10 @@ class Storage {
 		return path.resolve(this.downloadDir_, videoName);
 	}
 
+	videoAdded() {
+		this.videoListPromise_ = null;
+	}
+
 	async removeVideo(videoName) {
 		await this.prepareDir_();
 		this.videoListPromise_ = Promise.resolve((await this.videoList).filter(a => a !== videoName));

@@ -15,7 +15,6 @@ customElements.define(name, class extends XElement {
 	}
 
 	async refreshList() {
-		// todo seems to not be called on download
 		this.clearChildren('#list');
 		let videoList = await storage.videoList;
 		this.$('#count').textContent = videoList.length;

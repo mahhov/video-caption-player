@@ -16,7 +16,10 @@ customElements.define(name, class extends XElement {
 			video.status.promise
 				.then(() => line.classList.add('succeeded'))
 				.catch(() => line.classList.add('failed'))
-				.finally(this.emit('downloaded'));
+				.finally(() => {
+					storage.videoAdded();
+					this.emit('downloaded')
+				});
 			this.$('#download-list').appendChild(line);
 		});
 
