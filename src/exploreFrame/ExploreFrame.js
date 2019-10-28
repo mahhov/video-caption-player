@@ -43,6 +43,11 @@ customElements.define(name, class extends XElement {
 				this.query_(this.$('#search-input').value);
 		});
 
+		this.$('#download-all-button').addEventListener('click', () => {
+			if (this.search_)
+				this.search_.videos.each(video => this.downloadQueue_.add(video.id_));
+		});
+
 		this.$('#video-download-input').addEventListener('keydown', ({key}) => {
 			if (key === 'Enter')
 				this.downloadVideo_(this.$('#video-download-input').value);
@@ -54,9 +59,9 @@ customElements.define(name, class extends XElement {
 		if (!query)
 			return;
 
-		let search = new dwytpl.Search();
-		search.query(query);
-		search.videos.each(video => {
+		this.search_ = new dwytpl.Search();
+		this.search_.query(query);
+		this.search_.videos.each(video => {
 			let line = document.createElement('div');
 			line.textContent = video.getName_();
 			line.addEventListener('click', () => this.downloadQueue_.add(video.id_));

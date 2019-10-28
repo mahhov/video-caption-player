@@ -14,6 +14,10 @@
 		flex-direction: column;
 	}
 
+	.search input {
+		flex: 1;
+	}
+
 	.download {
 		margin-top: 20px;
 	}
@@ -28,8 +32,10 @@
 </style>
 
 <div class="search">
-	<!-- download all button -->
-	<input id="search-input" placeholder="search">
+	<div class="horiz-container">
+		<input id="search-input" placeholder="search">
+		<button id="download-all-button">All</button>
+	</div>
 	<div id="search-list" class="list selectable"></div>
 	<!-- todo thumbnail -->
 </div>
@@ -37,5 +43,4 @@
 	<input id="video-download-input" placeholder="download video">
 	<div id="download-list" class="list"></div>
 	<!-- todo progress on separate line -->
-	<!--todo cancel button-->
 </div>

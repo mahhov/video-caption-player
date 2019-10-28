@@ -1,3 +1,11 @@
+.horiz-container {
+	display: flex;
+}
+
+.horiz-container > :not(:first-child) {
+	margin-left: 10px;
+}
+
 .list {
 	overflow-y: auto;
 	flex: 1;
