@@ -12,7 +12,6 @@ customElements.define(name, class extends XElement {
 		this.downloadQueue_ = new dwytpl.VideoList();
 		this.downloadQueue_.videos.each(video => {
 			let line = document.createElement('div');
-			video.status.stream.each(statusText => line.textContent = `${video.getName_()} - ${statusText}`);
 			video.status.promise
 				.then(() => line.classList.add('succeeded'))
 				.catch(() => line.classList.add('failed'))
@@ -20,6 +19,19 @@ customElements.define(name, class extends XElement {
 					storage.videoAdded();
 					this.emit('downloaded')
 				});
+
+			let removeButton = document.createElement('button');
+			removeButton.textContent = 'X';
+			removeButton.addEventListener('click', async () => {
+				video.stopDownload();
+				line.remove();
+			});
+			line.appendChild(removeButton);
+
+			let text = document.createElement('span');
+			video.status.stream.each(statusText => text.textContent = `${video.getName_()} - ${statusText}`);
+			line.appendChild(text);
+
 			this.$('#download-list').appendChild(line);
 		});
 
