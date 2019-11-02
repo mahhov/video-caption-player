@@ -15,11 +15,13 @@ customElements.define(name, class VideoFrame extends XElement {
 			this.$('#video').src = URL.createObjectURL(this.$('#video-input').files[0]);
 			this.$('#video-input').blur();
 		});
+		this.$('#video-input-button').addEventListener('click', () => this.$('#video-input').click());
 
 		this.$('#subtitles-input').addEventListener('change', () => {
 			this.$('#subtitles').src = URL.createObjectURL(this.$('#subtitles-input').files[0]);
 			this.$('#subtitles-input').blur();
 		});
+		this.$('#subtitles-input-button').addEventListener('click', () => this.$('#subtitles-input').click());
 
 		this.$('#fullscreen-button').addEventListener('click', () => this.fullscreenToggle_());
 
