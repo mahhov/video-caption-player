@@ -63,9 +63,17 @@ customElements.define(name, class extends XElement {
 		this.search_.query(query);
 		this.search_.videos.each(video => {
 			let line = document.createElement('div');
-			line.textContent = video.getName_();
-			line.addEventListener('click', () => this.downloadQueue_.add(video.id_));
+
+			let img = document.createElement('img');
+			img.src = video.thumbnail;
+			line.appendChild(img);
+
+			let text = document.createElement('span');
+			text.textContent = video.numberedFileName.replace(/_/g, ' ');
+			line.appendChild(text);
+
 			this.$('#search-list').appendChild(line);
+			line.addEventListener('click', () => this.downloadQueue_.add(video.id));
 		});
 	}
 
