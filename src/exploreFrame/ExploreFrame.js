@@ -29,7 +29,7 @@ customElements.define(name, class extends XElement {
 			line.appendChild(removeButton);
 
 			let text = document.createElement('span');
-			video.status.stream.each(statusText => text.textContent = `${video.getName_()} - ${statusText}`);
+			video.status.stream.each(statusText => text.textContent = `${video.numberedFileName} - ${statusText}`);
 			line.appendChild(text);
 
 			this.$('#download-list').appendChild(line);
@@ -45,7 +45,7 @@ customElements.define(name, class extends XElement {
 
 		this.$('#download-all-button').addEventListener('click', () => {
 			if (this.search_)
-				this.search_.videos.each(video => this.downloadQueue_.add(video.id_));
+				this.search_.videos.each(video => this.downloadQueue_.add(video.id));
 		});
 
 		this.$('#video-download-input').addEventListener('keydown', ({key}) => {
