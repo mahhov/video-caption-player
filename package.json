@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bs-better-stream": "^1.9.0",
-    "dwytpl": "^5.2.0",
+    "dwytpl": "^5.2.1",
     "xx-element": "^1.3.0"
   },
   "devDependencies": {
